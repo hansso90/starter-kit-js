@@ -2,9 +2,13 @@
 		"name": "starter-kit-js",
 		"version": "1.0.0",
 		"description": "JavaScript development environment",
-		"scripts": {},
-		"author": "Hans",
-		"license": "MIT",
+		"scripts": {
+				"prestart": "node build/startMessage.js",
+				"start": "npm-run-all --parallel security-check open:src",
+				"open:src": "node build/server.js",
+				"security-check": "nsp check"
+		},
+		"author": "Hans Lemkes",
 		"dependencies": {
 				"whatwg-fetch": "1.0.0"
 		},
