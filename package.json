@@ -4,7 +4,9 @@
 		"description": "JavaScript development environment",
 		"scripts": {
 				"prestart": "babel-node build/startMessage.js",
-				"start": "npm-run-all --parallel security-check open:src",
+                "start": "npm-run-all --parallel security-check open:src lint:watch",
+                "lint": "esw webpack.config.* src build --color",
+                "lint:watch": "npm run lint -- --watch",
 				"open:src": "babel-node build/server.js",
 				"security-check": "nsp check"
 		},
@@ -12,7 +14,7 @@
 		"dependencies": {
 				"npm": "^6.0.0",
 				"whatwg-fetch": "1.0.0"
-		},
+        },
 		"devDependencies": {
 				"babel-cli": "6.16.0",
 				"babel-core": "6.17.0",
