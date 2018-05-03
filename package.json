@@ -4,11 +4,13 @@
 		"description": "JavaScript development environment",
 		"scripts": {
 				"prestart": "babel-node build/startMessage.js",
-                "start": "npm-run-all --parallel security-check open:src lint:watch",
+                "start": "npm-run-all --parallel security-check open:src lint:watch test:watch",
                 "lint": "esw webpack.config.* src build --color",
                 "lint:watch": "npm run lint -- --watch",
 				"open:src": "babel-node build/server.js",
-				"security-check": "nsp check"
+                "security-check": "nsp check",
+                "test": "mocha --reporter progress build/testSetup.js \"src/**/*.test.js\"",
+                "test:watch": "npm run test -- --watch"
 		},
 		"author": "Hans Lemkes",
 		"dependencies": {
